@@ -1,4 +1,5 @@
 ﻿using Ninject.Modules;
+using XamarinBase.Interfaces;
 
 namespace XamarinBase.Modules
 {
@@ -16,6 +17,13 @@ namespace XamarinBase.Modules
             // Example: 
             // var dataService = new DataService(new Uri("www.example.com"));
             // Bind<IDataService>().ToMethod(x => dataService)
+            // OR: Bind<IExampleService>().To<ExampleService>()
+
+            // Bind Repository
+            // Respository is singleton for memory reasons on mobile database
+            // You can avoid singleton if needed.
+            var repository = new Repository.Repository("Default.db3");
+            Bind<IRepository>().ToMethod(x => repository).InSingletonScope();
         }
     }
 }

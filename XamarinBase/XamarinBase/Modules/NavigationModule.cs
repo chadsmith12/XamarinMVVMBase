@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using XamarinBase.Interfaces;
 using XamarinBase.Services;
+using XamarinBase.ViewModels;
 
 namespace XamarinBase.Modules
 {
@@ -33,6 +34,7 @@ namespace XamarinBase.Modules
             // Register the view mappings here
             // Example:
             // navigationService.RegisterViewMapping(typeof(MyViewModel), typeof(MyPage));
+            navigationService.RegisterViewMapping(typeof(MainViewModel), typeof(MainPage));
 
             // Bind the navigation service so it gets injected into the view models.
             // You only ever want one navigation service and not multiple navigation services laying around so we make a rule that this is done in the SingletonScope
