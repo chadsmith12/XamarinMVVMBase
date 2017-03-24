@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Ninject;
+using Ninject.Modules;
 using Xamarin.Forms;
+using XamarinBase.Modules;
 
 namespace XamarinBase
 {
@@ -17,16 +19,27 @@ namespace XamarinBase
         /// </value>
         public IKernel Kernal { get; set; }
 
-        public App()
+        /// <summary>
+        /// Initializes a new instance of the app.
+        /// </summary>
+        /// <param name="platofrmModules">The platoform specific modules that need to be loaded into the kernal.</param>
+        public App(params INinjectModule[] platofrmModules)
         {
             InitializeComponent();
+            // we must put some page, even if the page is nothing for iOS
+            MainPage = new ContentPage(); 
 
-            MainPage = new XamarinBase.MainPage();
+            // Register all the modules with the kernal
+            Kernal = new StandardKernel(new ServiceModule(), new NavigationModule(MainPage.Navigation));
         }
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            // App is starting now so get the main page ready
+            var mainPage = new NavigationPage(new MainPage());
+            // set the binding context/view model for this page
+
+            MainPage = mainPage;
         }
 
         protected override void OnSleep()

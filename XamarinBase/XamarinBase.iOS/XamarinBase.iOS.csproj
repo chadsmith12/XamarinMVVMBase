@@ -94,6 +94,7 @@
     <None Include="app.config" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
+    <Compile Include="Modules\PlatformModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork@2x" />
@@ -174,9 +175,13 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XamarinBase\XamarinBase.csproj">
-      <Project>{721121ba-9d44-41ed-92a4-341973191063}</Project>
+      <Project>{dcb83d15-a2c3-4982-92a8-f328c3b023cf}</Project>
       <Name>XamarinBase</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderers\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

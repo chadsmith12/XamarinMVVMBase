@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using XamarinBase.iOS.Modules;
 
 namespace XamarinBase.iOS
 {
@@ -23,7 +24,7 @@ namespace XamarinBase.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            LoadApplication(new App(new PlatformModule()));
 
             return base.FinishedLaunching(app, options);
         }
