@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using SQLite.Net.Async;
 using Xamarin.Forms;
-using XamarinBase.Domains;
 using XamarinBase.Interfaces;
 
 namespace XamarinBase.Repository
@@ -31,8 +26,6 @@ namespace XamarinBase.Repository
             // Define/Create any of the tables the database needs here
             // Example:
             // _database.CreateTableAsync<Entity>();
-            _database.CreateTableAsync<Movie>();
-
         }
 
         /// <summary>
