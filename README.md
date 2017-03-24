@@ -58,7 +58,7 @@ When compiled this will automatically get compiled to:
 ```csharp
  public event PropertyChangedEventHandler PropertyChanged;
 
-    string movie;
+    Movie movie;
     public Movie Movie
     {
         get { return movie; }
