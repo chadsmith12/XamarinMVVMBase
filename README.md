@@ -37,10 +37,10 @@ pubilc class MovieService : IMovieService
           _movieRepo = movieRepo;
      }
      
-     Task<IList<Movie>> GetAll()
+     public async Task<IList<Movie>> GetAll()
      {
           // get only rated r movies
-          var query = _movieRepo.GetAllAsync<Movie>.Where(movie => movie.Rating = Rating.R);
+          var query = _movieRepo.GetAllAsync<Movie>.Where(movie => movie.Rating == Rating.R);
           // we can chain our queries
           query = query.OrderByDescending(movie => movie.ReleaseDate);
           // We are finished with our async query, await the result now
@@ -58,7 +58,7 @@ When compiled this will automatically get compiled to:
 ```csharp
  public event PropertyChangedEventHandler PropertyChanged;
 
-    string movie;
+    Movie movie;
     public Movie Movie
     {
         get { return movie; }
