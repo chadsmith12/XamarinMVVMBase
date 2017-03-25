@@ -192,18 +192,21 @@ namespace XamarinBase.Services
 
             // try to find the empty constructor for this view and invoke it to initialize this page
             var constructor = viewType.GetTypeInfo().DeclaredConstructors.FirstOrDefault(x => !x.GetParameters().Any());
-            var view = constructor.Invoke(null) as Page;
+            var view = constructor.Invoke(null) as BasePage;
 
             // get a new instance of the view model and automatically bind it to the views binding context
             var currentApp = (App) Application.Current;
             var viewModel = currentApp.Kernal.GetService(viewModelType);
+            var dialogService = currentApp.Kernal.GetService(typeof(IDialogService)) as DialogService;
 
             if (view == null)
             {
-                throw new NullReferenceException($"Could not load view of type {viewType.FullName} registered to the {viewModelType.FullName}");
+                throw new NullReferenceException($"Could not load view of type {viewType.FullName} registered to the {viewModelType.FullName}. Did you forget a call to {nameof(RegisterViewMapping)}?");
             }
 
+            
             view.BindingContext = viewModel;
+            dialogService?.Init(view);
 
             if (asModal)
             {
