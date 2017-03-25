@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using SQLite.Net.Attributes;
 using Xamarin.Forms;
 using XamarinBase.Base;
 using XamarinBase.Interfaces;

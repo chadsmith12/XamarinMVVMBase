@@ -1,4 +1,6 @@
 using Ninject.Modules;
+using XamarinBase.Droid.Services;
+using XamarinBase.Interfaces;
 
 namespace XamarinBase.Droid.Modules
 {
@@ -16,6 +18,8 @@ namespace XamarinBase.Droid.Modules
             // IF it is ever needed that you have to have a brand new instance, this rule can be removed
             // Example: 
             // Bind<IService>().To<PlatformService>.InSingletonScope()
+
+            Bind<IDatabase>().To<AndroidDatabase>().InSingletonScope();
         }
     }
 }
