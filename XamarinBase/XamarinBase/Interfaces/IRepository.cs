@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 using SQLite.Net.Async;
 
 namespace XamarinBase.Interfaces
@@ -13,6 +16,21 @@ namespace XamarinBase.Interfaces
         /// <returns>An async table query that lets you preform and chain more async queries.
         /// </returns>
         AsyncTableQuery<TEntity> GetAllAsync<TEntity>() where TEntity : class, IEntity;
+
+        /// <summary>
+        /// Gets all of the entities of type &amp;lt;typeparamref name="TEntity"/&amp;gt; by the predicate.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
+        /// <param name="predicate">The predicate.</param>
+        /// <returns>An async table query that lets you preform and chain more async queries.</returns>
+        AsyncTableQuery<TEntity> GetAllAsync<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : class, IEntity;
+            /// <summary>
+        /// Finds all entities by the specified predicate.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
+        /// <param name="predicate">The predicate.</param>
+        /// <returns>Task to act off of that returns an IEnumerable of the entities.</returns>
+        Task<IEnumerable<TEntity>> FindAllAsync<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : class, IEntity;
 
         /// <summary>
         /// Gets the entity by its identifier.
