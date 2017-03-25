@@ -21,21 +21,21 @@ namespace XamarinBase.Helpers
 
     #region Setting Constants
 
-    private const string SettingsKey = "settings_key";
-    private static readonly string SettingsDefault = string.Empty;
+    private const string DatabaseNameKey = "database_name";
+    private static readonly string DatabaseNameValue = "Default.db3";
 
     #endregion
 
 
-    public static string GeneralSettings
+    public static string DatabaseName
     {
       get
       {
-        return AppSettings.GetValueOrDefault<string>(SettingsKey, SettingsDefault);
+        return AppSettings.GetValueOrDefault<string>(DatabaseNameKey, DatabaseNameValue);
       }
       set
       {
-        AppSettings.AddOrUpdateValue<string>(SettingsKey, value);
+        AppSettings.AddOrUpdateValue<string>(DatabaseNameKey, value);
       }
     }
 

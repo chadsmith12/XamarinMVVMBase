@@ -1,4 +1,5 @@
 ﻿using Ninject.Modules;
+using XamarinBase.Helpers;
 using XamarinBase.Interfaces;
 
 namespace XamarinBase.Modules
@@ -22,7 +23,7 @@ namespace XamarinBase.Modules
             // Bind Repository
             // Respository is singleton for memory reasons on mobile database
             // You can avoid singleton if needed.
-            var repository = new Repository.Repository("Default.db3");
+            var repository = new Repository.Repository(Settings.DatabaseName);
             Bind<IRepository>().ToMethod(x => repository).InSingletonScope();
         }
     }
