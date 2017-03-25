@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using PropertyChanged;
-using XamarinBase.Annotations;
+using XamarinBase.Interfaces;
 
 namespace XamarinBase.Base
 {
@@ -18,6 +18,15 @@ namespace XamarinBase.Base
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseViewModel"/> class.
+        /// </summary>
+        /// <param name="navigationService">The navigation service.</param>
+        protected BaseViewModel(INavigationService navigationService)
+        {
+            NavigationService = navigationService;
+        }
         #endregion
 
         #region Properties        
@@ -38,6 +47,14 @@ namespace XamarinBase.Base
         /// <c>true</c> if this instance is refreshing; otherwise, <c>false</c>.
         /// </value>
         public bool IsRefreshing { get; set; }
+
+        /// <summary>
+        /// Gets the navigation service.
+        /// </summary>
+        /// <value>
+        /// The navigation service.
+        /// </value>
+        protected INavigationService NavigationService { get; }
         #endregion
 
         #region Methods
@@ -54,8 +71,15 @@ namespace XamarinBase.Base
     [ImplementPropertyChanged]
     public abstract class BaseViewModel<TParameter> : BaseViewModel
     {
-        #region Constructors
-
+        #region Constructors        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseViewModel{TParameter}"/> class.
+        /// </summary>
+        /// <param name="navigationService">The navigation service.</param>
+        protected BaseViewModel(INavigationService navigationService) : base(navigationService)
+        {
+            
+        }
         #endregion
 
         #region Methods
@@ -81,7 +105,5 @@ namespace XamarinBase.Base
         public abstract Task Init(TParameter parameter);
 
         #endregion
-
-
     }
 }
