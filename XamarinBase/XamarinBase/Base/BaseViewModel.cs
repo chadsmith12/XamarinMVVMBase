@@ -4,6 +4,10 @@ using XamarinBase.Interfaces;
 
 namespace XamarinBase.Base
 {
+    /// <summary>
+    /// Provides a common base class that all ViewModels should inherit from to implement.
+    /// Provides common functionality that all ViewModels need or will use.
+    /// </summary>
     [ImplementPropertyChanged]
     public abstract class BaseViewModel
     {
@@ -59,9 +63,33 @@ namespace XamarinBase.Base
         /// <returns>Task to act off of.</returns>
         public abstract Task Init();
 
+        /// <summary>
+        /// Called when a view is appearing.
+        /// Override this method in your ViewModels if you need something happen when the view is appearing or need more things to happen after Init.
+        /// </summary>
+        public virtual void OnAppearing()
+        {
+            
+        }
+
+        /// <summary>
+        /// Called when the back button is pressed.
+        /// Override this method when you need to know that the back button was pressed from the view.
+        /// </summary>
+        public virtual void OnBackButtonPressed()
+        {
+            
+        }
+
         #endregion
     }
 
+    /// <summary>
+    /// Provides a common base class that all ViewMOdels should inherit from to implement.
+    /// This takes in a generic when you have a ViewModel that has to have a parameter passed into it. 
+    /// This could be from navigating from a ListView to an Item Detail you need to pass in the item we are viewing in the view model.
+    /// </summary>
+    /// <typeparam name="TParameter">The type of the parameter you're passing into the ViewModel.</typeparam>
     [ImplementPropertyChanged]
     public abstract class BaseViewModel<TParameter> : BaseViewModel
     {
@@ -97,7 +125,6 @@ namespace XamarinBase.Base
         /// <param name="parameter">The parameter we need when initializing the view model.</param>
         /// <returns>Task to act off of.</returns>
         public abstract Task Init(TParameter parameter);
-
         #endregion
     }
 }
