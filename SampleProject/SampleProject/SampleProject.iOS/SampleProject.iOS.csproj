@@ -160,7 +160,7 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XamarinBase\SampleProject.csproj">
+    <ProjectReference Include="..\SampleProject\SampleProject.csproj">
       <Project>{dcb83d15-a2c3-4982-92a8-f328c3b023cf}</Project>
       <Name>SampleProject</Name>
     </ProjectReference>

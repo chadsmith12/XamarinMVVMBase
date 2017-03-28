@@ -2,6 +2,7 @@
 using SampleProject.Interfaces;
 using SampleProject.Services;
 using SampleProject.ViewModels;
+using SampleProject.Views;
 using Xamarin.Forms;
 
 namespace SampleProject.Modules
@@ -35,6 +36,8 @@ namespace SampleProject.Modules
             // Example:
             // navigationService.RegisterViewMapping(typeof(MyViewModel), typeof(MyPage));
             navigationService.RegisterViewMapping(typeof(MainViewModel), typeof(MainPage));
+            navigationService.RegisterViewMapping(typeof(LoginViewModel), typeof(LoginPage));
+            navigationService.RegisterViewMapping(typeof(RegisterViewModel), typeof(RegisterPage));
 
             // Bind the navigation service so it gets injected into the view models.
             // You only ever want one navigation service and not multiple navigation services laying around so we make a rule that this is done in the SingletonScope

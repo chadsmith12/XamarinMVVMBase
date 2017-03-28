@@ -46,6 +46,8 @@ namespace SampleProject.Base
         /// </value>
         public bool IsRefreshing { get; set; }
 
+        public IDialogService DialogService { get; set; }
+
         /// <summary>
         /// Gets the navigation service.
         /// </summary>

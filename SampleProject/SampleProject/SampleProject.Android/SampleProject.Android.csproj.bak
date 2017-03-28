@@ -17,7 +17,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
     <JavaMaximumHeapSize />
@@ -149,7 +149,7 @@
     <Folder Include="Renderers\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SampleProject\SampleProject.csproj">
+    <ProjectReference Include="..\XamarinBase\SampleProject.csproj">
       <Project>{dcb83d15-a2c3-4982-92a8-f328c3b023cf}</Project>
       <Name>SampleProject</Name>
     </ProjectReference>

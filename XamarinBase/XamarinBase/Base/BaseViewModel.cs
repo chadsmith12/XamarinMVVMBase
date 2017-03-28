@@ -53,6 +53,14 @@ namespace XamarinBase.Base
         /// The navigation service.
         /// </value>
         protected INavigationService NavigationService { get; }
+
+        /// <summary>
+        /// Gets or sets the dialog service.
+        /// </summary>
+        /// <value>
+        /// The dialog service.
+        /// </value>
+        public IDialogService DialogService { get; set; }
         #endregion
 
         #region Methods

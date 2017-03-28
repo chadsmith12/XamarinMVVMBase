@@ -11,6 +11,8 @@ namespace SampleProject.Modules
     {
         public override void Load()
         {
+            Bind<LoginViewModel>().ToSelf();
+            Bind<RegisterViewModel>().ToSelf();
             Bind<MainViewModel>().ToSelf();
         }
     }

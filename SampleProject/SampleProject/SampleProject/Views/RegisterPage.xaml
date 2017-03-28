@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:base="clr-namespace:SampleProject.Base;assembly=SampleProject"
+               x:Class="SampleProject.Views.RegisterPage"
+               Title="Register">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="350"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="1" VerticalOptions="CenterAndExpand">
+            <Entry StyleId="EmailEntry" Text="{Binding Model.Email}" Placeholder="Email"/>
+            <Entry StyleId="UsernameEntry" Text="{Binding Model.Username}" Placeholder="Username"/>
+            <Entry StyleId="PasswordEntry" Text="{Binding Model.Password}" IsPassword="True" Placeholder="Password"/>
+            <Entry StyleId="PasswordEntry" IsPassword="True" Placeholder="Confirm Password"/>
+            <Button StyleId="RegisterButton" Command="{Binding RegisterCommand}" Text="Register" IsEnabled="{Binding IsBusy, Converter={StaticResource BooleanConverter}}"/>
+            <!--Loading indicator, shown when trying to log in-->
+            <ActivityIndicator IsRunning="True" IsVisible="{Binding IsBusy}"/>
+            <Label Text="Creating User" IsVisible="{Binding IsBusy}"/>
+        </StackLayout>
+    </Grid>
+</base:BasePage>
