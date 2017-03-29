@@ -118,12 +118,9 @@ namespace SampleProject.Services
         {
             if (XamarinNavigation.NavigationStack.Count > 0)
             {
-                await Task.Run(() =>
-                {
-                    var lastView = XamarinNavigation.NavigationStack[XamarinNavigation.NavigationStack.Count - 2];
-                    XamarinNavigation.RemovePage(lastView);
-                    OnCanGoBackChanged();
-                });
+                var lastView = XamarinNavigation.NavigationStack[XamarinNavigation.NavigationStack.Count - 2];
+                XamarinNavigation.RemovePage(lastView);
+                OnCanGoBackChanged();
             }
         }
 
@@ -140,13 +137,10 @@ namespace SampleProject.Services
                 return;
             }
 
-            await Task.Run(() =>
+            for (var i = 0; i < XamarinNavigation.NavigationStack.Count - 1; ++i)
             {
-                for (var i = 0; i < XamarinNavigation.NavigationStack.Count - 1; ++i)
-                {
-                    XamarinNavigation.RemovePage(XamarinNavigation.NavigationStack[i]);
-                }
-            });
+                XamarinNavigation.RemovePage(XamarinNavigation.NavigationStack[i]);
+            }
         }
 
         /// <summary>

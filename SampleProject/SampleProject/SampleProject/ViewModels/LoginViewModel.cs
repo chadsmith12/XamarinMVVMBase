@@ -58,8 +58,8 @@ namespace SampleProject.ViewModels
                     }
                     else
                     {
-                        await DialogService.ShowMessage(DialogType.Error, "Invalid Login", "The Email or Password was invalid. Please Try again", "Ok", null);
                         IsBusy = false;
+                        await DialogService.ShowMessage(DialogType.Error, "Invalid Login", "The Email or Password was invalid. Please Try again", "Ok", null);
                     }
                 }));
             }

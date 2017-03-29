@@ -21,7 +21,7 @@ namespace SampleProject.ViewModels
 
         public override async Task Init()
         {
-
+            await NavigationService.RemoveLastViewAsync();
         }
 
         public ICommand RegisterCommand
@@ -36,7 +36,8 @@ namespace SampleProject.ViewModels
                     var goToLogin = await DialogService.ShowMessage("Thank You", "Registration Successful. Would you like to go Login?", "Yes", "No", null);
                     if (goToLogin)
                     {
-                        await NavigationService.GoBackAsync();
+                        await NavigationService.NavigateToAsync<LoginViewModel>();
+                        await NavigationService.ClearBackStackAsync();
                     }
                 }));
             }
