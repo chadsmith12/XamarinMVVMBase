@@ -69,6 +69,7 @@
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Startup\AppLoader.cs" />
     <Compile Include="Styles\LoginStyles.xaml.cs">
       <DependentUpon>LoginStyles.xaml</DependentUpon>
     </Compile>

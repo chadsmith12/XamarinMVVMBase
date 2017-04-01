@@ -4,6 +4,7 @@ using Ninject;
 using Ninject.Modules;
 using SampleProject.Interfaces;
 using SampleProject.Modules;
+using SampleProject.Startup;
 using SampleProject.ViewModels;
 using SampleProject.Views;
 using Xamarin.Forms;
@@ -13,12 +14,12 @@ namespace SampleProject
     public partial class App : Application
     {
         /// <summary>
-        /// Gets or sets the dependency injection kernal.
+        /// Gets or sets the application loader.
         /// </summary>
         /// <value>
-        /// The kernal.
+        /// The application loader.
         /// </value>
-        public IKernel Kernal { get; set; }
+        public AppLoader AppLoader { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the app.
@@ -27,25 +28,9 @@ namespace SampleProject
         public App(params INinjectModule[] platformModules)
         {
             InitializeComponent();
-            try
-            {
-                var mainPage = new NavigationPage(new Views.LoginPage());
-                Kernal = new StandardKernel();
-                // Register all the modules with the kernal
-                // We register the platform specific modules first because they have the bindings to the IDatabase which the ServiceModule will need.
-                Kernal.Load(platformModules);
-                Kernal.Load(new ServiceModule(), new ViewModelModule(), new NavigationModule(mainPage.Navigation));
-
-                mainPage.BindingContext = Kernal.Get<LoginViewModel>();
-                ((LoginViewModel) mainPage.BindingContext).DialogService = Kernal.Get<IDialogService>();
-                ((LoginViewModel) mainPage.BindingContext).DialogService.Init(mainPage);
-
-                MainPage = mainPage;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
+            AppLoader = new AppLoader();
+            AppLoader.Startup<LoginViewModel>(new LoginPage(), platformModules);
+            MainPage = AppLoader.MainPage;
         }
 
         protected override void OnStart()

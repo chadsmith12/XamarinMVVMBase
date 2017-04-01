@@ -190,8 +190,8 @@ namespace XamarinBase.Services
 
             // get a new instance of the view model and automatically bind it to the views binding context
             var currentApp = (App) Application.Current;
-            var viewModel = currentApp.Kernal.GetService(viewModelType) as BaseViewModel;
-            var dialogService = currentApp.Kernal.GetService(typeof(IDialogService)) as DialogService;
+            var viewModel = currentApp.AppLoader.Kernal.GetService(viewModelType) as BaseViewModel;
+            var dialogService = currentApp.AppLoader.Kernal.GetService(typeof(IDialogService)) as DialogService;
 
             if (view == null)
             {

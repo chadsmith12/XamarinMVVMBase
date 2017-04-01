@@ -3,6 +3,7 @@ using Ninject.Modules;
 using Xamarin.Forms;
 using XamarinBase.Interfaces;
 using XamarinBase.Modules;
+using XamarinBase.Startup;
 using XamarinBase.ViewModels;
 
 namespace XamarinBase
@@ -10,12 +11,12 @@ namespace XamarinBase
     public partial class App : Application
     {
         /// <summary>
-        /// Gets or sets the dependency injection kernal.
+        /// Gets or sets the application loader.
         /// </summary>
         /// <value>
-        /// The kernal.
+        /// The application loader.
         /// </value>
-        public IKernel Kernal { get; set; }
+        public AppLoader AppLoader { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the app.
@@ -24,19 +25,9 @@ namespace XamarinBase
         public App(params INinjectModule[] platformModules)
         {
             InitializeComponent();
-            // we must put some page, even if the page is nothing, for iOS
-            var mainPage = new NavigationPage(new MainPage());
-            Kernal = new StandardKernel();
-            // Register all the modules with the kernal
-            // We register the platform specific modules first because they have the bindings to the IDatabase which the ServiceModule will need.
-            Kernal.Load(platformModules);
-            Kernal.Load(new ServiceModule(), new ViewModelModule(), new NavigationModule(mainPage.Navigation));
-
-            mainPage.BindingContext = Kernal.Get<MainViewModel>();
-            ((MainViewModel)mainPage.BindingContext).DialogService = Kernal.Get<IDialogService>();
-            ((MainViewModel)mainPage.BindingContext).DialogService.Init(mainPage);
-
-            MainPage = mainPage;
+            AppLoader = new AppLoader();
+            AppLoader.Startup<MainViewModel>(new MainPage(), platformModules);
+            MainPage = AppLoader.MainPage;
         }
 
         protected override void OnStart()

@@ -23,7 +23,7 @@ namespace SampleProject.Repository
         public Repository(string dbName)
         {
             var currentApp = (App) Application.Current;
-            var databaseService = (IDatabase) currentApp.Kernal.GetService(typeof(IDatabase));
+            var databaseService = (IDatabase) currentApp.AppLoader.Kernal.GetService(typeof(IDatabase));
             _database = databaseService.DbConnect(dbName);
 
             // Define/Create any of the tables the database needs here
