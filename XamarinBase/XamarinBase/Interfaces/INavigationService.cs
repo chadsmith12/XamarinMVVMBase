@@ -49,14 +49,12 @@ namespace XamarinBase.Interfaces
         /// <summary>
         /// Removes the last view from the navigation stack.
         /// </summary>
-        /// <returns>A Task to act off of.</returns>
-        Task RemoveLastViewAsync();
+        void RemoveLastView();
 
         /// <summary>
         /// Clears the back stack.
         /// </summary>
-        /// <returns>A Task to act off of.</returns>
-        Task ClearBackStackAsync();
+        void ClearBackStack();
 
         /// <summary>
         /// Navigates to the specified URI.

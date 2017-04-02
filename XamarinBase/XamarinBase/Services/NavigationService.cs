@@ -112,10 +112,7 @@ namespace XamarinBase.Services
         /// <summary>
         /// Removes the last view from the navigation stack.
         /// </summary>
-        /// <returns>
-        /// A Task to act off of.
-        /// </returns>
-        public async Task RemoveLastViewAsync()
+        public void RemoveLastView()
         {
             if (XamarinNavigation.NavigationStack.Count > 0)
             {
@@ -128,10 +125,7 @@ namespace XamarinBase.Services
         /// <summary>
         /// Clears the back stack.
         /// </summary>
-        /// <returns>
-        /// A Task to act off of.
-        /// </returns>
-        public async Task ClearBackStackAsync()
+        public void ClearBackStack()
         {
             if (XamarinNavigation.NavigationStack.Count <= 1)
             {
