@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:base="clr-namespace:SampleProject.Base;assembly=SampleProject"
+             x:Class="SampleProject.Views.MainPage"
+             Title="Main Page">
+    
+    <StackLayout>
+        <Label Text="Number of movies to generate: "
+               HorizontalOptions="Center"/>
+        <Entry Text="{Binding NumberMovies}"
+               HorizontalOptions="CenterAndExpand"/>
+        <Button Text="Create Movies"
+                HorizontalOptions="Center"
+                Command="{Binding CreateMoviesCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource BooleanConverter}}"/>
+        <Button Text="Delete Movies"
+                HorizontalOptions="Center"
+                Command="{Binding DeleteMoviesCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource BooleanConverter}}"/>
+            <!--Loading indicator, shown when trying to log in-->
+        <ActivityIndicator IsRunning="True" IsVisible="{Binding IsBusy}"/>
+        <Label Text="{Binding Message}" HorizontalOptions="Center" IsVisible="{Binding IsBusy}"/>
+    </StackLayout>
+</base:BasePage>

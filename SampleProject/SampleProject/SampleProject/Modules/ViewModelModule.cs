@@ -1,4 +1,5 @@
-﻿using Ninject.Modules;
+﻿using Microsoft.CSharp.RuntimeBinder;
+using Ninject.Modules;
 using SampleProject.ViewModels;
 
 namespace SampleProject.Modules

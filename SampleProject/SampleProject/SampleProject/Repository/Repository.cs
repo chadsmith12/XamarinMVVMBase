@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using SampleProject.Domains;
 using SampleProject.Interfaces;
 using SQLite.Net.Async;
+using SQLiteNetExtensionsAsync.Extensions;
 using Xamarin.Forms;
 
 namespace SampleProject.Repository
@@ -29,6 +31,7 @@ namespace SampleProject.Repository
             // Define/Create any of the tables the database needs here
             // Example:
             // _database.CreateTableAsync<Entity>();
+            _database.CreateTableAsync<Movie>();
         }
 
         /// <summary>

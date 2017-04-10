@@ -55,6 +55,8 @@ namespace SampleProject.ViewModels
                         // simulate a request to show the busy indicator
                         await Task.Delay(2000);
                         IsBusy = false;
+                        await NavigationService.NavigateToAsync<MainViewModel>();
+                        await NavigationService.ClearBackStackAsync();
                     }
                     else
                     {

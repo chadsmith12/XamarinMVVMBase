@@ -27,10 +27,17 @@ namespace SampleProject
         /// <param name="platformModules">The platoform specific modules that need to be loaded into the kernal.</param>
         public App(params INinjectModule[] platformModules)
         {
-            InitializeComponent();
-            AppLoader = new AppLoader();
-            AppLoader.Startup<LoginViewModel>(new LoginPage(), platformModules);
-            MainPage = AppLoader.MainPage;
+            try
+            {
+                InitializeComponent();
+                AppLoader = new AppLoader();
+                AppLoader.Startup<LoginViewModel>(new LoginPage(), platformModules);
+                MainPage = AppLoader.MainPage;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
 
         protected override void OnStart()

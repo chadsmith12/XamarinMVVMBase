@@ -22,6 +22,7 @@ namespace SampleProject.Modules
             // OR: Bind<IExampleService>().To<ExampleService>()
 
             Bind<IDialogService>().To<DialogService>();
+            Bind<IMovieService>().To<MovieService>();
 
             // Bind Repository
             // Respository is singleton for memory reasons on mobile database
