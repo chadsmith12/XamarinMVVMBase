@@ -11,10 +11,12 @@ namespace SampleProject.Interfaces
 {
     public interface IMovieService
     {
-        Task<IEnumerable<Movie>> GetAll(Expression<Func<Movie, bool>> predicate); 
+        Task<IEnumerable<Movie>> GetAll(Expression<Func<Movie, bool>> predicate);
+        Task<IEnumerable<Movie>> GetAll(int skip, int take);
         Task<IEnumerable<Movie>> GetAllByRating(MovieRating rating);
         Task<Movie> GetById(int id);
         Task Save(Movie movie);
         Task Delete(int id);
+        Task<bool> HasMovies();
     }
 }

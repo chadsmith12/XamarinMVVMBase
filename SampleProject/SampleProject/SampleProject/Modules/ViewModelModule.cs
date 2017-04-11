@@ -15,6 +15,7 @@ namespace SampleProject.Modules
             Bind<LoginViewModel>().ToSelf();
             Bind<RegisterViewModel>().ToSelf();
             Bind<MainViewModel>().ToSelf();
+            Bind<ListMovieViewModel>().ToSelf();
         }
     }
 }

@@ -26,6 +26,12 @@ namespace SampleProject.Services
             return await movies.ToListAsync();
         }
 
+        public async Task<IEnumerable<Movie>> GetAll(int skip, int take)
+        {
+            var movies = _movieRepo.GetAllAsync<Movie>().Skip(skip).Take(take);
+            return await movies.ToListAsync();
+        }
+
         public async Task<IEnumerable<Movie>> GetAllByRating(MovieRating rating)
         {
             var movies = _movieRepo.GetAllAsync<Movie>(movie => movie.MovieRating == rating);
@@ -53,6 +59,12 @@ namespace SampleProject.Services
         public async Task Delete(int id)
         {
             await _movieRepo.DeleteAsync<Movie>(id);
+        }
+
+        public async Task<bool> HasMovies()
+        {
+            var movies = _movieRepo.GetAllAsync<Movie>();
+            return await movies.CountAsync() > 0;
         }
     }
 }

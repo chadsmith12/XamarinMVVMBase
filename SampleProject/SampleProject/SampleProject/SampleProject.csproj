@@ -44,6 +44,7 @@
       <DependentUpon>BasePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base\BaseViewModel.cs" />
+    <Compile Include="Controls\InfiniteListView.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Domains\Actor.cs" />
     <Compile Include="Domains\Movie.cs" />
@@ -75,9 +76,13 @@
     <Compile Include="Styles\LoginStyles.xaml.cs">
       <DependentUpon>LoginStyles.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ListMovieViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="Views\ListMovieView.xaml.cs">
+      <DependentUpon>ListMovieView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -149,7 +154,12 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ListMovieView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>

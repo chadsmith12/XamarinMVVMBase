@@ -12,10 +12,17 @@
                HorizontalOptions="CenterAndExpand"/>
         <Button Text="Create Movies"
                 HorizontalOptions="Center"
-                Command="{Binding CreateMoviesCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource BooleanConverter}}"/>
+                Command="{Binding CreateMoviesCommand}" 
+                IsEnabled="{Binding IsBusy, Converter={StaticResource BooleanConverter}}"/>
         <Button Text="Delete Movies"
                 HorizontalOptions="Center"
-                Command="{Binding DeleteMoviesCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource BooleanConverter}}"/>
+                Command="{Binding DeleteMoviesCommand}" 
+                IsEnabled="{Binding IsBusy, Converter={StaticResource BooleanConverter}}"/>
+        <Button Text="View Movies"
+                HorizontalOptions="Center"
+                Command="{Binding ViewMoviesCommand}"
+                IsEnabled="{Binding HasMovies}"/>
+        
             <!--Loading indicator, shown when trying to log in-->
         <ActivityIndicator IsRunning="True" IsVisible="{Binding IsBusy}"/>
         <Label Text="{Binding Message}" HorizontalOptions="Center" IsVisible="{Binding IsBusy}"/>

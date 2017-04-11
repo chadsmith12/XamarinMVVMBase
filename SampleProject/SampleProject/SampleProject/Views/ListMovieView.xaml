@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SampleProject.Views.ListMovieView"
+             xmlns:base="clr-namespace:SampleProject.Base;assembly=SampleProject"
+             xmlns:controls="clr-namespace:SampleProject.Controls;assembly=SampleProject"
+             Title="{Binding Title}">
+    <controls:InfiniteListView
+        ItemsSource="{Binding Movies}"
+        SelectedItem="{Binding SelectedMovie}"
+        LoadMoreCommand="{Binding LoadMoreMovies}">
+        <controls:InfiniteListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.View>
+                        <Label Text="{Binding Title}"></Label>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </controls:InfiniteListView.ItemTemplate>
+    </controls:InfiniteListView>
+</base:BasePage>

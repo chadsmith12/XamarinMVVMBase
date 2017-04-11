@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Net.Http;
+using System.Linq;
 using System.Threading.Tasks;
 using SampleProject.Interfaces;
 using System.Windows.Input;
@@ -14,6 +14,7 @@ namespace SampleProject.ViewModels
     {
         private ICommand _createMoviesCommand;
         private ICommand _deleteMoviesCommand;
+        private ICommand _viewMoviesCommand;
 
         private readonly IMovieService _movieService;
 
@@ -24,11 +25,12 @@ namespace SampleProject.ViewModels
 
         public override async Task Init()
         {
-
+            HasMovies = await _movieService.HasMovies();
         }
 
         public int NumberMovies { get; set; } = 100;
         public string Message { get; set; }
+        public bool HasMovies { get; set; }
 
         public ICommand CreateMoviesCommand
         {
@@ -47,7 +49,7 @@ namespace SampleProject.ViewModels
                     }
                     stopWatch.Stop();
                     IsBusy = false;
-                    await DialogService.ShowMessage(DialogType.Message, "Create Movie Successful!", $"Generated {NumberMovies} Movies in {stopWatch.Elapsed.Seconds} seconds", "Ok", null);
+                    HasMovies = true;
                 }));
             }
         }
@@ -69,7 +71,18 @@ namespace SampleProject.ViewModels
                     }
                     stopWatch.Stop();
                     IsBusy = false;
-                    await DialogService.ShowMessage(DialogType.Message, "Delete Movie Successful!", $"Deleted {NumberMovies} Movies in {stopWatch.Elapsed.Seconds} seconds", "Ok", null);
+                    HasMovies = await _movieService.HasMovies();
+                }));
+            }
+        }
+
+        public ICommand ViewMoviesCommand
+        {
+            get
+            {
+                return _viewMoviesCommand ?? (_viewMoviesCommand = new Command(async () =>
+                {
+                    await NavigationService.NavigateToAsync<ListMovieViewModel>();
                 }));
             }
         }
