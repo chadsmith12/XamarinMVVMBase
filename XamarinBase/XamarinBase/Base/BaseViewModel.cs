@@ -8,7 +8,7 @@ namespace XamarinBase.Base
     /// Provides a common base class that all ViewModels should inherit from to implement.
     /// Provides common functionality that all ViewModels need or will use.
     /// </summary>
-    [ImplementPropertyChanged]
+    [AddINotifyPropertyChangedInterface]
     public abstract class BaseViewModel
     {
         #region Private Fields
@@ -98,7 +98,7 @@ namespace XamarinBase.Base
     /// This could be from navigating from a ListView to an Item Detail you need to pass in the item we are viewing in the view model.
     /// </summary>
     /// <typeparam name="TParameter">The type of the parameter you're passing into the ViewModel.</typeparam>
-    [ImplementPropertyChanged]
+    [AddINotifyPropertyChangedInterface]
     public abstract class BaseViewModel<TParameter> : BaseViewModel
     {
         #region Constructors        
