@@ -6,6 +6,9 @@
     /// </summary>
     public interface IEntity
     {
+        /// <summary>
+        /// The primary key identifier for an entity implementing this interface.
+        /// </summary>
         int Id { get; set; }
     }
 }

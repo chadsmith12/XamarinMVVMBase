@@ -6,6 +6,10 @@ using SQLite.Net.Async;
 
 namespace XamarinBase.Interfaces
 {
+    /// <summary>
+    /// An interface that any dataprovider can implement to bring a of working with entities in a database.
+    /// This interface is always implemented using SQLite by default in the base project, though it is possible to implement this interface using a different data provider.
+    /// </summary>
     public interface IRepository
     {
         /// <summary>

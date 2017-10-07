@@ -18,6 +18,9 @@ namespace XamarinBase.Controls
         /// </summary>
         public static readonly BindableProperty LoadMoreCommandProperty = Create(nameof(LoadMoreCommand), typeof(ICommand), typeof(InfiniteListView));
 
+        /// <summary>
+        /// Initializes a InfiniteListView and automatically subscribes to the ItemAppearing event so the user can bind to the LoadMoreCommand.
+        /// </summary>
         public InfiniteListView()
         {
             ItemAppearing += OnItemAppearing;
