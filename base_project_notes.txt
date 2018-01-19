@@ -1,0 +1,16 @@
+XamarinBase Project
+Standard Project
+Targets: .net Standard 2.0
+
+Packages Needed:
+*PropertyChanged.Fody
+*Newtonsoft.Json
+*System.Het.Http
+*Xam.Plugin.Settings
+*EntityFrameworkCore.SQLite
+
+
+Android Project:
+*PropertyChanged.Fody (is it needed?)
+*Ninject
+*EntityFrameworkCore.SQLite
